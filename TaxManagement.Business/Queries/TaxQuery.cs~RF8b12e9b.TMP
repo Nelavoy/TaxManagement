@@ -1,0 +1,64 @@
+﻿using MediatR;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using TaxManagement.Core.Exceptions;
+using TaxManagement.Repository.Interfaces.DataAccess;
+
+namespace TaxManagement.Business.Commands
+{
+    public class TaxQuery : IRequest<decimal>
+    {
+        public string Municipality { get; set; }
+        public DateTime Date { get; set; }
+    }
+
+    public class TaxQueryHandler : IRequestHandler<TaxQuery, decimal>
+    {
+        private readonly IMunicipalitiesRepository _municipalityRepository;
+        private readonly IYearlyTaxRepository _yearlyTaxRepository;
+        private readonly IMonthlyTaxRepository _monthlyTaxRepository;
+        private readonly IDailyTaxRepository _dailyTaxRepository;
+        public TaxQueryHandler(IMunicipalitiesRepository municipalityRepository,
+            IYearlyTaxRepository yearlyTaxRepository,
+            IMonthlyTaxRepository monthlyTaxRepository,
+            IDailyTaxRepository dailyTaxRepository
+            )
+        {
+            _municipalityRepository = municipalityRepository;
+            _yearlyTaxRepository = yearlyTaxRepository;
+            _monthlyTaxRepository = monthlyTaxRepository;
+            _dailyTaxRepository = dailyTaxRepository;
+        }
+
+        public async Task<decimal> Handle(TaxQuery request, CancellationToken cancellationToken)
+        {
+            var existingMunicipalities = await _municipalityRepository.GetByAsync(request.Municipality);
+
+            if (existingMunicipalities?.Any() != true)
+                throw new NotFoundException("No data found for the given input");
+
+            return await GetTax(request, existingMunicipalities.FirstOrDefault().Id);
+        }
+
+        private async Task<decimal> GetTax(TaxQuery request, int id)
+        {
+            var dailyTax = await _dailyTaxRepository.GetByAsync(request.Date, id);
+            var monthlyTax = await _monthlyTaxRepository.GetByAsync(request.Date, id);
+            var yearlyTax = await _yearlyTaxRepository.GetByAsync(request.Date, id);
+
+            if (dailyTax?.Any() == true)
+                return dailyTax.FirstOrDefault().Id;
+                     
+            else if (monthlyTax?.Any() == true)
+                return monthlyTax.FirstOrDefault().Id;
+
+            else if (yearlyTax?.Any() == true)
+                return yearlyTax.FirstOrDefault().Id;
+            else
+                throw new NotFoundException("No data found for the given input");
+        }
+
+    }
+}

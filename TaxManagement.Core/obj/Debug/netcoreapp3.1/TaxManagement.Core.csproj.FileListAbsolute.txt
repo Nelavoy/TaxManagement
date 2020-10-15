@@ -1,0 +1,8 @@
+C:\DIT_New\TaxManagement\TaxManagement.Core\bin\Debug\netcoreapp3.1\TaxManagement.Core.deps.json
+C:\DIT_New\TaxManagement\TaxManagement.Core\bin\Debug\netcoreapp3.1\TaxManagement.Core.dll
+C:\DIT_New\TaxManagement\TaxManagement.Core\bin\Debug\netcoreapp3.1\TaxManagement.Core.pdb
+C:\DIT_New\TaxManagement\TaxManagement.Core\obj\Debug\netcoreapp3.1\TaxManagement.Core.csprojAssemblyReference.cache
+C:\DIT_New\TaxManagement\TaxManagement.Core\obj\Debug\netcoreapp3.1\TaxManagement.Core.AssemblyInfoInputs.cache
+C:\DIT_New\TaxManagement\TaxManagement.Core\obj\Debug\netcoreapp3.1\TaxManagement.Core.AssemblyInfo.cs
+C:\DIT_New\TaxManagement\TaxManagement.Core\obj\Debug\netcoreapp3.1\TaxManagement.Core.dll
+C:\DIT_New\TaxManagement\TaxManagement.Core\obj\Debug\netcoreapp3.1\TaxManagement.Core.pdb

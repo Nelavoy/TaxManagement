@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaxManagement.API</name>
+    </assembly>
+    <members>
+        <member name="M:TaxManagement.API.Controllers.TaxController.AddMunicipality(System.Collections.Generic.IEnumerable{TaxManagement.Core.Models.Municipality})">
+            <summary>
+            Adds municipalities
+            </summary>
+            <remarks>
+            Municipalities to be added can be passed as list.
+            </remarks>
+            <param name="municipalities">Municipalities</param>  
+            <response code="201">Created</response>  
+            <response code="400">Bad request</response>
+            <response code="401">Un authorized</response>
+        </member>
+        <member name="M:TaxManagement.API.Controllers.TaxController.AddOrUpdateTax(TaxManagement.Core.Enums.TaxType,TaxManagement.Core.Models.TaxDetails)">
+            <summary>
+            Adds tax details for municipalities
+            </summary>
+            <remarks>
+            For TaxType choose 
+            0 for "Daily Tax", 
+            1 for "Monthly Tax", 
+            2 for "Yearly Tax"
+            </remarks>
+            <param name="taxType">Tax type</param>  
+            <param name="taxDetails">Tax details</param>  
+            <response code="201">Created</response>  
+            <response code="400">Bad request</response>
+            <response code="401">Un authorized</response>
+        </member>
+        <member name="M:TaxManagement.API.Controllers.TaxController.GetTax(System.String,System.DateTime)">
+            <summary>
+            Gets tax details of a municipality
+            </summary>
+            <param name="municipality">municipality</param>  
+            <param name="date">date</param>  
+            <response code="200">OK</response>  
+            <response code="400">Bad request</response>
+            <response code="401">Un authorized</response>
+        </member>
+    </members>
+</doc>

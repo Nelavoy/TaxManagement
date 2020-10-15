@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\DIT_New\TaxManagement\TaxManagement.API\TaxManagement.API.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaxManagement.Business\TaxManagement.Business.csproj" />
+    <ProjectReference Include="..\TaxManagement.Core\TaxManagement.Core.csproj" />
+    <ProjectReference Include="..\TaxManagement.Repository\TaxManagement.Repository.csproj" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+
+</Project>
